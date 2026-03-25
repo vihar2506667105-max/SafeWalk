@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #090b16;
+  --bg2: #181033;
+  --text: #ebefff;
+  --glass: rgba(255,255,255,.08);
+  --safe: #34d399;
+  --warn: #f59e0b;
+  --danger: #ff5da2;
+}
+:root[data-theme='light'] {
+  --bg: #f3f4ff;
+  --bg2: #dbe3ff;
+  --text: #111427;
+  --glass: rgba(255,255,255,.65);
+}
+*{box-sizing:border-box}
+body { margin:0; font-family: Inter, ui-sans-serif, system-ui; color:var(--text); background: linear-gradient(135deg,var(--bg),var(--bg2)); min-height:100vh; }
+.app-shell { min-height: 100vh; position:relative; padding:1rem; overflow:hidden; }
+.bg-fx { position:absolute; inset:-20%; background: radial-gradient(circle at 20% 30%, rgba(81,119,255,.3), transparent 30%), radial-gradient(circle at 78% 12%, rgba(255,93,162,.23), transparent 32%), radial-gradient(circle at 58% 80%, rgba(97,210,255,.22), transparent 28%); filter: blur(20px); animation: drift 12s infinite alternate; }
+@keyframes drift { to { transform: translate3d(1.2%, -1%, 0) scale(1.04);} }
+.glass { background: var(--glass); backdrop-filter: blur(14px); border:1px solid rgba(255,255,255,.13); box-shadow: 0 10px 35px rgba(0,0,0,.25), inset 0 1px 1px rgba(255,255,255,.22); }
+.glass-inner { background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius: 16px; }
+.topbar{position:relative; z-index:2; border-radius:18px; padding:1rem 1.2rem; display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;}
+.topbar h1{margin:0; font-size:1.2rem; font-weight:800; letter-spacing:.01em}
+.topbar p{margin:.2rem 0 0;opacity:.8;font-size:.9rem}
+.top-actions{display:flex; gap:.5rem}
+.chip{border:0; border-radius:999px; padding:.55rem .95rem; background:rgba(255,255,255,.14); color:var(--text); cursor:pointer; transition:.2s transform,.2s background}
+.chip:hover{transform:translateY(-1px) scale(1.02)}
+.chip:active{transform:scale(.98)}
+.chip.primary{background:linear-gradient(90deg,#3b82f6,#a855f7); color:white}
+.chip.danger{background:linear-gradient(90deg,#fb7185,#e11d48); color:white}
+.auth-wrap{display:grid; place-items:center; min-height:75vh; position:relative; z-index:2}
+.auth-card{width:min(95vw,460px); padding:1.2rem; border-radius:20px; display:flex; flex-direction:column; gap:.8rem}
+.auth-card input,.chat-actions input{background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:12px; padding:.6rem .7rem; color:var(--text)}
+.role-pills{display:grid; grid-template-columns:1fr 1fr; gap:.5rem}
+.role-pills button{padding:.6rem .4rem; border-radius:12px; border:1px solid rgba(255,255,255,.2); background:transparent; color:var(--text)}
+.role-pills .active{background:rgba(59,130,246,.35)}
+.split-layout{position:relative; z-index:2; display:grid; grid-template-columns:1fr 1fr 280px; gap:1rem; align-items:start}
+.panel{border-radius:22px; padding:1rem; display:flex; flex-direction:column; gap:.8rem; min-height:80vh}
+.panel-head h3{margin:0; font-size:1.1rem}
+.panel-head span{opacity:.75; font-size:.85rem}
+.map{height:220px; padding:.3rem}
+.map-svg{width:100%; height:100%}
+.status-line{border-left:4px solid; padding-left:.6rem; font-size:.92rem}
+.actions{display:flex; gap:.45rem; flex-wrap:wrap}
+.live-banner{padding:.55rem .7rem; border-radius:12px; background:rgba(52,211,153,.2); border:1px solid rgba(52,211,153,.4)}
+.chat{padding:.75rem}
+.chat-log{height:90px; overflow:auto; font-size:.86rem; display:flex; flex-direction:column; gap:.3rem; margin:.35rem 0}
+.chat-actions{display:flex; gap:.4rem; align-items:center}
+.sos-overlay{padding:.7rem; border-radius:14px; border:1px solid rgba(255,93,162,.5); background:rgba(255,93,162,.1); position:relative; overflow:hidden}
+.radar{width:46px; height:46px; border-radius:999px; border:2px solid #ff5da2; position:absolute; right:12px; top:10px}
+.dashboard{border-radius:20px; padding:1rem; position:sticky; top:1rem}
+.score{font-size:1.05rem; font-weight:700; margin:.55rem 0}
+.metric{font-size:.9rem; opacity:.9; margin:.25rem 0}
+.timeline{margin-top:.7rem; display:flex; flex-direction:column; gap:.35rem; max-height:230px; overflow:auto; font-size:.82rem}
+@media (max-width: 1080px){
+  .split-layout{grid-template-columns:1fr}
+  .panel{min-height:unset}
+}
